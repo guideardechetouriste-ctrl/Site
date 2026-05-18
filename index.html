@@ -1,751 +1,263 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Entretien Vert 07 – Débroussaillage & Entretien Extérieur Ardèche</title>
-  <meta name="description" content="Entretien Vert 07 – Débroussaillage, tonte, taille de haies, élagage et entretien de jardins en Ardèche (07). Devis gratuit."/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"/>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manu Mommée TP - Terrassement & Travaux Publics à Saint-Priest</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; color: #2c3e50; background-color: #f8fafc; line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-    :root {
-      --vert:        #2d6a2d;
-      --vert-clair: #4a9e4a;
-      --vert-pale:  #e8f5e8;
-      --orange:      #e8650a;
-      --orange-clair:#ff8c3a;
-      --blanc:      #ffffff;
-      --gris:       #f5f5f3;
-      --gris-fonce: #2a2a28;
-      --texte:      #1a2e1a;
-    }
+        /* TOP BAR */
+        .top-bar { background-color: #111827; color: #9ca3af; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #1f2937; }
+        .top-bar-box { display: flex; justify-content: space-between; align-items: center; }
+        .top-bar-box strong { color: #f39c12; }
 
-    html { scroll-behavior: smooth; }
+        /* HEADER */
+        header { background-color: #1a252f; color: #fff; padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .header-box { display: flex; justify-content: space-between; align-items: center; }
+        .logo-box { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { background-color: #f39c12; color: #1a252f; padding: 8px 12px; border-radius: 6px; font-weight: bold; font-size: 20px; }
+        .logo-text h1 { font-size: 20px; margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
+        .logo-text span { font-size: 11px; color: #f39c12; display: block; font-weight: bold; letter-spacing: 2px; }
+        nav a { color: #ecf0f1; text-decoration: none; margin-left: 20px; font-size: 15px; transition: color 0.3s; }
+        nav a:hover { color: #f39c12; }
+        .btn-devis { background-color: #f39c12; color: #fff !important; padding: 10px 20px; border-radius: 4px; font-weight: bold; text-decoration: none; transition: background-color 0.3s; }
+        .btn-devis:hover { background-color: #e67e22; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--blanc);
-      color: var(--texte);
-      overflow-x: hidden;
-    }
+        /* HERO */
+        .hero { background: linear-gradient(rgba(26,37,47,0.85), rgba(26,37,47,0.85)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1400') no-repeat center center/cover; color: #fff; padding: 100px 20px; text-align: center; border-bottom: 5px solid #f39c12; }
+        .badge-local { background-color: rgba(243,156,18,0.15); color: #f39c12; border: 1px solid #f39c12; padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 20px; letter-spacing: 1px; }
+        .hero h2 { font-size: 44px; margin: 0 0 20px; max-width: 800px; margin-left: auto; margin-right: auto; color: #fff; font-weight: 800; }
+        .hero h2::after { display: none; }
+        .hero p { font-size: 18px; color: #d1d5db; margin-bottom: 35px; max-width: 680px; margin-left: auto; margin-right: auto; }
+        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .btn-hero-primary { background-color: #f39c12; color: #fff; padding: 14px 28px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 16px; transition: background-color 0.3s; }
+        .btn-hero-primary:hover { background-color: #e67e22; }
+        .btn-hero-secondary { background-color: #34495e; color: #fff; padding: 14px 28px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 16px; border-bottom: 2px solid #2c3e50; }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 3px solid var(--orange);
-      padding: 0 4rem;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 70px;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: .7rem;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem; letter-spacing: .05em;
-      color: var(--vert);
-    }
-    .nav-logo .logo-icon {
-      width: 36px; height: 36px;
-      background: var(--orange);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-    }
-    .nav-logo span { color: var(--orange); }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none; font-size: .85rem; font-weight: 500;
-      color: var(--gris-fonce); letter-spacing: .03em;
-      transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--vert); }
-    .nav-cta {
-      background: var(--orange); color: #fff;
-      padding: .6rem 1.4rem; border-radius: 6px;
-      font-size: .85rem; font-weight: 600;
-      text-decoration: none; letter-spacing: .03em;
-      transition: background .2s, transform .15s;
-    }
-    .nav-cta:hover { background: var(--orange-clair); transform: translateY(-1px); }
+        /* SECTION TITLES */
+        h2 { text-align: center; font-size: 30px; color: #1a252f; margin-top: 70px; margin-bottom: 40px; position: relative; font-weight: 700; }
+        h2::after { content: ''; display: block; width: 60px; height: 4px; background-color: #f39c12; margin: 12px auto 0; border-radius: 2px; }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #1a3d1a 0%, #2d6a2d 45%, #1e4a1e 100%);
-      display: flex; align-items: center;
-      padding: 0 4rem;
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-    }
-    .hero-badge {
-      position: absolute; top: 120px; right: 4rem;
-      background: var(--orange); color: #fff;
-      width: 110px; height: 110px; border-radius: 50%;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: .85rem; letter-spacing: .1em; text-align: center;
-      line-height: 1.3;
-      animation: spin-slow 12s linear infinite;
-      box-shadow: 0 4px 20px rgba(232,101,10,.4);
-    }
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    .hero-badge-inner { animation: spin-slow-reverse 12s linear infinite; font-size: 1.1rem; }
-    @keyframes spin-slow-reverse {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(-360deg); }
-    }
-    .hero-content { position: relative; z-index: 2; max-width: 700px; }
-    .hero-tag {
-      display: inline-block;
-      background: rgba(232,101,10,.2);
-      border: 1px solid var(--orange);
-      color: var(--orange-clair);
-      padding: .35rem 1rem; border-radius: 100px;
-      font-size: .75rem; font-weight: 600; letter-spacing: .1em;
-      text-transform: uppercase; margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 7vw, 6rem);
-      color: #fff; line-height: 1; letter-spacing: .02em;
-      margin-bottom: 1rem;
-    }
-    .hero h1 span { color: var(--orange); }
-    .hero-sub {
-      font-size: 1.1rem; color: rgba(255,255,255,.75);
-      font-weight: 300; line-height: 1.7; margin-bottom: 2.5rem;
-      max-width: 520px;
-    }
-    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--orange); color: #fff;
-      padding: .9rem 2rem; border-radius: 8px;
-      font-size: .95rem; font-weight: 600;
-      text-decoration: none; transition: all .2s;
-      border: 2px solid var(--orange);
-    }
-    .btn-primary:hover { background: var(--orange-clair); border-color: var(--orange-clair); transform: translateY(-2px); }
-    .btn-secondary {
-      background: transparent; color: #fff;
-      padding: .9rem 2rem; border-radius: 8px;
-      font-size: .95rem; font-weight: 500;
-      text-decoration: none; transition: all .2s;
-      border: 2px solid rgba(255,255,255,.4);
-    }
-    .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,.08); }
-    .hero-stats {
-      position: absolute; bottom: 3rem; left: 4rem;
-      display: flex; gap: 3rem;
-    }
-    .stat { color: #fff; }
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.2rem; color: var(--orange); line-height: 1;
-    }
-    .stat-label { font-size: .75rem; color: rgba(255,255,255,.6); letter-spacing: .08em; text-transform: uppercase; }
+        /* SERVICES */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+        .service-card { background-color: #fff; border: 1px solid #e2e8f0; border-top: 4px solid #34495e; padding: 28px 24px; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
+        .service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .service-card h3 { font-size: 17px; color: #1a252f; margin-top: 0; margin-bottom: 10px; }
+        .service-card p { font-size: 14px; color: #475569; margin: 0; }
 
-    /* ── SECTION TITLES ── */
-    .section-tag {
-      display: inline-block;
-      background: var(--vert-pale); color: var(--vert);
-      padding: .3rem .9rem; border-radius: 100px;
-      font-size: .7rem; font-weight: 600; letter-spacing: .12em;
-      text-transform: uppercase; margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      letter-spacing: .03em; line-height: 1.05;
-      color: var(--texte); margin-bottom: 1rem;
-    }
-    .section-title span { color: var(--orange); }
-    .section-title em {
-      font-family: 'Playfair Display', serif;
-      font-style: italic; color: var(--vert);
-    }
-    .divider {
-      width: 50px; height: 4px;
-      background: linear-gradient(90deg, var(--orange), var(--vert));
-      border-radius: 2px; margin-bottom: 2rem;
-    }
+        /* ENGAGEMENTS */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+        .feature-box { background-color: #fff; border: 1px solid #e2e8f0; padding: 28px; border-radius: 4px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+        .feature-box h3 { color: #f39c12; margin-top: 0; font-size: 20px; }
+        .feature-box p { font-size: 14px; color: #475569; margin: 0; }
 
-    /* ── SERVICES ── */
-    .services { padding: 6rem 4rem; background: var(--gris); }
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem; margin-top: 3rem;
-    }
-    .service-card {
-      background: #fff; border-radius: 12px;
-      padding: 2rem; position: relative; overflow: hidden;
-      border: 1px solid #e8e8e4;
-      transition: transform .25s, box-shadow .25s;
-    }
-    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.1); }
-    .service-card::before {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 4px;
-      background: linear-gradient(90deg, var(--vert), var(--orange));
-    }
-    .service-icon {
-      font-size: 2.5rem; margin-bottom: 1rem; display: block;
-    }
-    .service-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem; letter-spacing: .04em;
-      color: var(--texte); margin-bottom: .6rem;
-    }
-    .service-desc {
-      font-size: .9rem; color: #666; line-height: 1.7;
-      margin-bottom: 1.2rem;
-    }
-    .service-badge {
-      display: inline-block;
-      background: var(--vert-pale); color: var(--vert);
-      padding: .25rem .75rem; border-radius: 100px;
-      font-size: .72rem; font-weight: 600; letter-spacing: .08em;
-    }
+        /* GALLERY */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 25px; margin-bottom: 20px; }
+        .photo-card { background-color: #fff; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .photo-wrapper { width: 100%; height: 290px; background-color: #edf2f7; position: relative; }
+        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-tag { position: absolute; top: 15px; left: 15px; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; color: #fff; }
+        .tag-avant { background-color: #e74c3c; }
+        .tag-apres { background-color: #2ecc71; }
+        .photo-info { padding: 16px 20px; }
+        .photo-info h4 { margin: 0 0 6px; color: #1a252f; font-size: 16px; }
+        .photo-info p { margin: 0; color: #64748b; font-size: 14px; }
 
-    /* ── ZONE ── */
-    .zone { padding: 6rem 4rem; background: var(--gris-fonce); }
-    .zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
-    .zone-map {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 16px; padding: 3rem; text-align: center;
-      position: relative;
-    }
-    .zone-map-emoji { font-size: 5rem; margin-bottom: 1rem; display: block; }
-    .zone-map h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem; color: var(--orange); letter-spacing: .05em;
-    }
-    .zone-map p { color: rgba(255,255,255,.6); font-size: .9rem; margin-top: .5rem; }
-    .zone-list { display: flex; flex-direction: column; gap: 1rem; }
-    .zone-item {
-      display: flex; align-items: center; gap: 1rem;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 10px; padding: 1rem 1.5rem;
-    }
-    .zone-item-icon {
-      width: 40px; height: 40px; border-radius: 8px;
-      background: rgba(232,101,10,.2); border: 1px solid rgba(232,101,10,.3);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; flex-shrink: 0;
-    }
-    .zone-item-text strong { display: block; color: #fff; font-size: .95rem; }
-    .zone-item-text span { color: rgba(255,255,255,.5); font-size: .8rem; }
-    .zone-note {
-      margin-top: 1.5rem; padding: 1rem 1.5rem;
-      background: rgba(74,158,74,.1); border: 1px solid rgba(74,158,74,.2);
-      border-radius: 10px; color: rgba(255,255,255,.7);
-      font-size: .85rem; line-height: 1.6;
-    }
-    .zone-note strong { color: var(--vert-clair); }
+        /* CONTACT */
+        .contact-section { background-color: #1a252f; color: #fff; padding: 50px; border-radius: 6px; margin-top: 70px; border-left: 6px solid #f39c12; }
+        .contact-box { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .contact-info-side h3 { color: #f39c12; font-size: 24px; margin-top: 0; }
+        .contact-info-side p { color: #cbd5e1; margin-bottom: 25px; font-size: 15px; }
+        .info-details { margin-top: 20px; }
+        .info-line { margin-bottom: 14px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
+        .info-line strong { color: #f39c12; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; margin-bottom: 5px; color: #ecf0f1; font-weight: bold; font-size: 13px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid #34495e; background-color: #2c3e50; color: #fff; border-radius: 4px; font-size: 14px; font-family: inherit; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: #7f8c8d; }
+        .btn-submit { background-color: #f39c12; color: #fff; padding: 13px 30px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; font-size: 15px; transition: background-color 0.3s; font-family: inherit; margin-top: 6px; }
+        .btn-submit:hover { background-color: #e67e22; }
 
-    /* ── TARIFS ── */
-    .tarifs { padding: 6rem 4rem; background: var(--blanc); }
-    .tarifs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
-    .tarif-card {
-      border-radius: 16px; padding: 2.5rem; position: relative;
-      border: 2px solid #e8e8e4;
-      transition: transform .25s, box-shadow .25s;
-    }
-    .tarif-card:hover { transform: translateY(-4px); }
-    .tarif-card.featured {
-      border-color: var(--orange);
-      box-shadow: 0 8px 40px rgba(232,101,10,.15);
-    }
-    .tarif-badge-top {
-      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-      background: var(--orange); color: #fff;
-      padding: .3rem 1.2rem; border-radius: 100px;
-      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
-      text-transform: uppercase; white-space: nowrap;
-    }
-    .tarif-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem; letter-spacing: .04em;
-      color: var(--texte); margin-bottom: .5rem;
-    }
-    .tarif-desc { font-size: .85rem; color: #888; margin-bottom: 1.5rem; line-height: 1.5; }
-    .tarif-price {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.8rem; color: var(--vert); line-height: 1;
-      margin-bottom: .3rem;
-    }
-    .tarif-price sup { font-size: 1.2rem; vertical-align: top; margin-top: .5rem; }
-    .tarif-unit { font-size: .8rem; color: #aaa; margin-bottom: 1.5rem; }
-    .tarif-features { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
-    .tarif-features li {
-      font-size: .88rem; color: #555; display: flex; align-items: center; gap: .6rem;
-    }
-    .tarif-features li::before { content: '✓'; color: var(--vert); font-weight: 700; flex-shrink: 0; }
-    .tarif-note {
-      margin-top: 2rem; padding: 1.2rem;
-      background: var(--vert-pale); border-radius: 10px;
-      font-size: .85rem; color: var(--vert); text-align: center; line-height: 1.6;
-    }
+        /* FOOTER */
+        footer { background-color: #111827; color: #9ca3af; padding: 30px 0; margin-top: 70px; font-size: 14px; border-top: 1px solid #1f2937; }
+        .footer-box { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-left strong { color: #fff; }
+        .footer-right a { color: #9ca3af; text-decoration: none; margin-left: 15px; }
+        .footer-right a:hover { color: #f39c12; }
 
-    /* ── CONTACT ── */
-    .contact { padding: 6rem 4rem; background: var(--gris); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; margin-top: 3rem; align-items: start; }
-    .contact-info { display: flex; flex-direction: column; gap: 1.2rem; }
-    .contact-item {
-      display: flex; align-items: flex-start; gap: 1rem;
-      background: #fff; border-radius: 12px; padding: 1.2rem 1.5rem;
-      border: 1px solid #e8e8e4;
-    }
-    .contact-item-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: var(--vert-pale); color: var(--vert);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem; flex-shrink: 0;
-    }
-    .contact-item small {
-      display: block; font-size: .68rem; font-weight: 600;
-      letter-spacing: .1em; text-transform: uppercase; color: #999;
-      margin-bottom: .2rem;
-    }
-    .contact-item strong { font-size: 1rem; color: var(--texte); }
-    .contact-item a { color: var(--vert); text-decoration: none; font-weight: 600; }
-
-    .contact-form {
-      background: #fff; border-radius: 16px; padding: 2.5rem;
-      border: 1px solid #e8e8e4;
-      box-shadow: 0 4px 30px rgba(0,0,0,.06);
-    }
-    .contact-form h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem; letter-spacing: .04em;
-      color: var(--texte); margin-bottom: 1.5rem;
-    }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-group label {
-      display: block; font-size: .72rem; font-weight: 600;
-      letter-spacing: .08em; text-transform: uppercase;
-      color: #777; margin-bottom: .4rem;
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%; padding: .8rem 1rem;
-      border: 1.5px solid #e0e0dc; border-radius: 8px;
-      font-family: 'DM Sans', sans-serif; font-size: .95rem;
-      color: var(--texte); background: var(--gris);
-      outline: none; transition: border-color .2s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus { border-color: var(--vert); background: #fff; }
-    .form-group textarea { resize: vertical; min-height: 110px; }
-    .form-submit {
-      width: 100%; background: var(--vert); color: #fff;
-      border: none; border-radius: 8px;
-      font-family: 'DM Sans', sans-serif; font-size: .95rem;
-      font-weight: 700; letter-spacing: .05em;
-      padding: 1rem; cursor: pointer; margin-top: .5rem;
-      transition: background .2s, transform .15s;
-    }
-    .form-submit:hover { background: var(--vert-clair); transform: translateY(-1px); }
-
-    /* ── MENTIONS ── */
-    .mentions { padding: 5rem 4rem; background: #1a2e1a; }
-    .mentions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; max-width: 900px; margin-top: 2.5rem; }
-    .mentions h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: .85rem; letter-spacing: .15em;
-      color: var(--orange); margin-bottom: .8rem;
-      padding-bottom: .5rem; border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-    .mentions p { font-size: .9rem; color: rgba(255,255,255,.6); line-height: 1.8; }
-    .mentions a { color: var(--orange-clair); text-decoration: none; }
-    .mentions-full { grid-column: 1/-1; }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #111d11; padding: 1.5rem 4rem;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid rgba(255,255,255,.05);
-    }
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem;
-      color: rgba(255,255,255,.4); letter-spacing: .08em;
-    }
-    .footer-logo span { color: var(--orange); }
-    footer p { font-size: .72rem; color: rgba(255,255,255,.3); letter-spacing: .08em; text-transform: uppercase; }
-
-    /* ── RESPONSIVE ── */
-    @media(max-width:900px) {
-      nav { padding: 0 1.5rem; }
-      .nav-links { display: none; }
-      .hero { padding: 7rem 1.5rem 10rem; }
-      .hero-stats { left: 1.5rem; gap: 2rem; }
-      .hero-badge { display: none; }
-      .services, .zone, .tarifs, .contact, .mentions { padding: 4rem 1.5rem; }
-      .services-grid, .tarifs-grid { grid-template-columns: 1fr; }
-      .zone-grid, .contact-grid, .mentions-grid { grid-template-columns: 1fr; }
-      .form-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: .8rem; padding: 1.5rem; text-align: center; }
-    }
-  </style>
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .contact-box { grid-template-columns: 1fr; gap: 30px; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .top-bar-box { flex-direction: column; gap: 4px; text-align: center; }
+            .hero h2 { font-size: 28px; }
+            nav { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<nav>
-  <div class="nav-logo">
-    <div class="logo-icon">🌿</div>
-    Entretien Vert <span>07</span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#zone">Zone d'intervention</a></li>
-    <li><a href="#tarifs">Tarifs</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#mentions">Mentions légales</a></li>
-  </ul>
-  <a href="tel:0748169803" class="nav-cta">📞 Devis gratuit</a>
-</nav>
+    <div class="top-bar">
+        <div class="container top-bar-box">
+            <div><span>📍 Zone d'intervention : <strong>Saint-Priest & toute l'Ardèche</strong></span></div>
+            <div><span>📞 Besoin d'un terrassier ? Contactez-nous dès aujourd'hui</span></div>
+        </div>
+    </div>
 
-<section class="hero" id="top">
-  <div class="hero-badge">
-    <div class="hero-badge-inner">🌿</div>
-    DEVIS<br>GRATUIT
-  </div>
-  <div class="hero-content">
-    <div class="hero-tag">✦ Ardèche (07) · Intervention rapide</div>
-    <h1>Entretien<br><span>Vert 07</span></h1>
-    <p class="hero-sub">
-      Débroussaillage, tonte, taille de haies, élagage, entretien de jardins et nettoyage de terrains 
-      en Ardèche. Un travail soigné, un terrain propre, un devis gratuit.
-    </p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn-primary">Demander un devis gratuit</a>
-      <a href="#services" class="btn-secondary">Voir les services</a>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">07</div>
-      <div class="stat-label">Ardèche entière</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">6</div>
-      <div class="stat-label">Services proposés</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">100%</div>
-      <div class="stat-label">Devis gratuit</div>
-    </div>
-  </div>
-</section>
+    <header>
+        <div class="container header-box">
+            <div class="logo-box">
+                <div class="logo-icon">🚜</div>
+                <div class="logo-text">
+                    <h1>Manu Mommée TP</h1>
+                    <span>Terrassement & Réseaux</span>
+                </div>
+            </div>
+            <nav>
+                <a href="#services">Nos Services</a>
+                <a href="#chantiers">Chantiers</a>
+                <a href="#contact" class="btn-devis">Devis Gratuit</a>
+            </nav>
+        </div>
+    </header>
 
-<section class="services" id="services">
-  <div class="section-tag">✦ Nos prestations</div>
-  <h2 class="section-title">Nos <em>services</em><br>d'entretien extérieur</h2>
-  <div class="divider"></div>
-  <div class="services-grid">
-    <div class="service-card">
-      <span class="service-icon">🔥</span>
-      <h3 class="service-name">Débroussaillage</h3>
-      <p class="service-desc">Élimination des broussailles, herbes hautes, ronces et végétation envahissante. Idéal pour sécuriser vos terrains contre les risques d'incendie et les nuisibles.</p>
-      <span class="service-badge">Obligation légale</span>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🌱</span>
-      <h3 class="service-name">Tonte de pelouse</h3>
-      <p class="service-desc">Tonte régulière ou ponctuelle de votre pelouse, bords compris. Résultat net et soigné pour un jardin toujours impeccable, quelle que soit la surface.</p>
-      <span class="service-badge">Régulier ou ponctuel</span>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">✂️</span>
-      <h3 class="service-name">Taille de haies</h3>
-      <p class="service-desc">Taille et entretien de toutes haies (lauriers, thuyas, cyprès, buis…). Coupe précise pour une haie dense, droite et parfaitement formée.</p>
-      <span class="service-badge">Toutes essences</span>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🌳</span>
-      <h3 class="service-name">Élagage</h3>
-      <p class="service-desc">Élagage et recépage d'arbres pour assurer leur santé, limiter les risques (chute de branches) et valoriser votre propriété. Évacuation des déchets incluse.</p>
-      <span class="service-badge">Sécurité & esthétique</span>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🏡</span>
-      <h3 class="service-name">Entretien de jardins</h3>
-      <p class="service-desc">Désherbage, binage, ramassage de feuilles, nettoyage de massifs et entretien général de votre jardin. Prestations régulières ou ponctuelles selon vos besoins.</p>
-      <span class="service-badge">Sur mesure</span>
-    </div>
-    <div class="service-card">
-      <span class="service-icon">🧹</span>
-      <h3 class="service-name">Nettoyage de terrains</h3>
-      <p class="service-desc">Remise en état de terrains abandonnés, nettoyage de parcelles avant construction ou vente. Évacuation des déchets verts en déchetterie agréée.</p>
-      <span class="service-badge">Terrains abandonnés</span>
-    </div>
-  </div>
-</section>
+    <section class="hero">
+        <div class="container">
+            <div class="badge-local">• Artisan Local • Saint-Priest</div>
+            <h2>Terrassement & Aménagement Extérieur</h2>
+            <p>Artisan qualifié pour particuliers et professionnels en Ardèche. Du gros œuvre aux finitions — précision, délais tenus, garantie décennale.</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn-hero-primary">🚜 Demander un devis gratuit</a>
+                <a href="#chantiers" class="btn-hero-secondary">Voir nos chantiers →</a>
+            </div>
+        </div>
+    </section>
 
-<section class="zone" id="zone">
-  <div class="section-tag" style="background:rgba(74,158,74,.15);color:var(--vert-clair)">✦ Zone d'intervention</div>
-  <h2 class="section-title" style="color:#fff">Partout en <span>Ardèche</span></h2>
-  <div class="divider"></div>
-  <div class="zone-grid">
-    <div class="zone-map">
-      <span class="zone-map-emoji">🗺️</span>
-      <h3>Ardèche (07)</h3>
-      <p>Département entier · Intervention rapide</p>
-    </div>
-    <div>
-      <div class="zone-list">
-        <div class="zone-item">
-          <div class="zone-item-icon">📍</div>
-          <div class="zone-item-text">
-            <strong>Nord Ardèche</strong>
-            <span>Annonay, Tournon-sur-Rhône, Lamastre…</span>
-          </div>
-        </div>
-        <div class="zone-item">
-          <div class="zone-item-icon">📍</div>
-          <div class="zone-item-text">
-            <strong>Centre Ardèche</strong>
-            <span>Privas, Aubenas, Le Teil, Viviers…</span>
-          </div>
-        </div>
-        <div class="zone-item">
-          <div class="zone-item-icon">📍</div>
-          <div class="zone-item-text">
-            <strong>Sud Ardèche</strong>
-            <span>Ruoms, Vallon-Pont-d'Arc, Joyeuse…</span>
-          </div>
-        </div>
-        <div class="zone-item">
-          <div class="zone-item-icon">📍</div>
-          <div class="zone-item-text">
-            <strong>Ardèche Verte & Volcanique</strong>
-            <span>Vals-les-Bains, Largentière, Thueyts…</span>
-          </div>
-        </div>
-      </div>
-      <div class="zone-note">
-        <strong>Déplacement inclus et gratuit</strong> dans un rayon de 30 km autour de Privas. Pour les chantiers plus éloignés ou hors département, des frais kilométriques adaptés peuvent s'appliquer (nous consulter lors du devis).
-      </div>
-    </div>
-  </div>
-</section>
+    <main class="container">
 
-<section class="tarifs" id="tarifs">
-  <div class="section-tag">✦ Tarifs</div>
-  <h2 class="section-title">Des <em>prix clairs</em><br>et transparents</h2>
-  <div class="divider"></div>
-  <div class="tarifs-grid">
-    <div class="tarif-card">
-      <h3 class="tarif-name">Petite intervention</h3>
-      <p class="tarif-desc">Tonte, taille de haies, désherbage — petites surfaces jusqu'à 200m²</p>
-      <div class="tarif-price"><sup>À partir de </sup>60<sup>€</sup></div>
-      <div class="tarif-unit">par intervention</div>
-      <ul class="tarif-features">
-        <li>Tonte de pelouse (petite surface)</li>
-        <li>Taille de haies courtes</li>
-        <li>Désherbage manuel</li>
-        <li>Évacuation des déchets</li>
-      </ul>
-    </div>
-    <div class="tarif-card featured">
-      <div class="tarif-badge-top">⭐ Le plus demandé</div>
-      <h3 class="tarif-name">Entretien complet</h3>
-      <p class="tarif-desc">Tonte + haies + désherbage — jardins et terrains moyens jusqu'à 1000m²</p>
-      <div class="tarif-price"><sup>À partir de </sup>150<sup>€</sup></div>
-      <div class="tarif-unit">par intervention</div>
-      <ul class="tarif-features">
-        <li>Tonte complète de la pelouse</li>
-        <li>Taille de toutes les haies</li>
-        <li>Désherbage massifs & bordures</li>
-        <li>Nettoyage & évacuation inclus</li>
-        <li>Rapport d'intervention</li>
-      </ul>
-    </div>
-    <div class="tarif-card">
-      <h3 class="tarif-name">Débroussaillage & gros travaux</h3>
-      <p class="tarif-desc">Terrains abandonnés, grandes parcelles, élagage — sur devis</p>
-      <div class="tarif-price" style="font-size:1.8rem">Sur devis</div>
-      <div class="tarif-unit">gratuit et sans engagement</div>
-      <ul class="tarif-features">
-        <li>Débroussaillage réglementaire</li>
-        <li>Élagage et abattage</li>
-        <li>Nettoyage de terrains abandonnés</li>
-        <li>Évacuation en déchetterie agréée</li>
-        <li>Devis détaillé offert</li>
-      </ul>
-    </div>
-  </div>
-  <div class="tarif-note">
-    💡 Tous les tarifs sont indiqués hors taxe · <strong>TVA non applicable — art. 293B du CGI (micro-entrepreneur)</strong><br>
-    Devis gratuit et sans engagement · Paiement à la fin de l'intervention
-  </div>
-</section>
+        <section id="services">
+            <h2>Nos Prestations de Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🏗️ Terrassement & Fondations</h3>
+                    <p>Préparation de terrain, excavation pour maisons individuelles, terrassement de piscines et création de tranchées pour réseaux.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🛣️ Aménagement Extérieur</h3>
+                    <p>Création de cours, chemins d'accès privatifs ou agricoles, empierrement de talus et enrochement paysager durable.</p>
+                </div>
+                <div class="service-card">
+                    <h3>💧 Assainissement & VRD</h3>
+                    <p>Pose et mise aux normes de fosses septiques, micro-stations de traitement et raccordement aux réseaux (eaux usées / pluviales).</p>
+                </div>
+                <div class="service-card">
+                    <h3>🔨 Démolition & Déblaiement</h3>
+                    <p>Démolition sécurisée de petites structures, tri, nettoyage de parcelles et évacuation des gravats vers les centres agréés.</p>
+                </div>
+            </div>
+        </section>
 
-<section class="contact" id="contact">
-  <div class="section-tag">✦ Contact</div>
-  <h2 class="section-title">Demandez votre<br><em>devis gratuit</em></h2>
-  <div class="divider"></div>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <div class="contact-item">
-        <div class="contact-item-icon">📞</div>
-        <div>
-          <small>Téléphone</small>
-          <strong><a href="tel:0748169803">07 48 16 98 03</a></strong>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">✉️</div>
-        <div>
-          <small>Email</small>
-          <strong><a href="mailto:entretienvert07@gmail.com">entretienvert07@gmail.com</a></strong>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">📍</div>
-        <div>
-          <small>Adresse</small>
-          <strong>126 Chemin de Chalamon<br>07000 Saint-Priest, Ardèche</strong>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">🕐</div>
-        <div>
-          <small>Disponibilité</small>
-          <strong>Lun–Sam · 8h–19h</strong>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-icon">⚡</div>
-        <div>
-          <small>Réponse garantie</small>
-          <strong>Sous 24 heures</strong>
-        </div>
-      </div>
-    </div>
-    <div class="contact-form">
-      <h3>Formulaire de contact</h3>
-      <form action="https://formspree.io/f/xjgzbdnj" method="POST">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nom / Prénom *</label>
-            <input type="text" name="name" required placeholder="Jean Dupont"/>
-          </div>
-          <div class="form-group">
-            <label>Téléphone *</label>
-            <input type="tel" name="telephone" required placeholder="06 00 00 00 00"/>
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Email *</label>
-          <input type="email" name="_replyto" required placeholder="votre@email.com"/>
-        </div>
-        <div class="form-group">
-          <label>Type de prestation</label>
-          <select name="prestation">
-            <option value="">Choisir un service…</option>
-            <option>Débroussaillage</option>
-            <option>Tonte de pelouse</option>
-            <option>Taille de haies</option>
-            <option>Élagage</option>
-            <option>Entretien de jardin</option>
-            <option>Nettoyage de terrain</option>
-            <option>Plusieurs services</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Commune d'intervention</label>
-          <input type="text" name="commune" placeholder="Ex: Aubenas, Privas…"/>
-        </div>
-        <div class="form-group">
-          <label>Votre message</label>
-          <textarea name="message" placeholder="Décrivez votre terrain, la surface approximative, vos besoins…"></textarea>
-        </div>
-        <input type="hidden" name="_subject" value="Nouvelle demande de devis – Entretien Vert 07"/>
-        <button type="submit" class="form-submit">Envoyer ma demande de devis →</button>
-      </form>
-    </div>
-  </div>
-</section>
+        <section id="engagements">
+            <h2>Pourquoi faire confiance à Manu Mommée TP ?</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>📍 Ancrage Local</h3>
+                    <p>Basé à Saint-Priest, une parfaite connaissance des sols ardéchois et une grande réactivité pour vos chantiers.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🛡️ Garantie Décennale</h3>
+                    <p>Tous nos travaux de terrassement et de gros œuvre sont couverts par une assurance décennale obligatoire.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🤝 Devis Transparent</h3>
+                    <p>Une étude personnalisée sur site suivie d'un devis clair, gratuit et détaillé ligne par ligne avant le début des travaux.</p>
+                </div>
+            </div>
+        </section>
 
-<section class="mentions" id="mentions">
-  <div class="section-tag" style="background:rgba(232,101,10,.15);color:var(--orange-clair)">✦ Informations légales</div>
-  <h2 class="section-title" style="color:#fff">Mentions <span>légales</span></h2>
-  <div class="divider"></div>
-  <div class="mentions-grid">
-    <div>
-      <h3>Éditeur du site</h3>
-      <p>
-        <strong style="color:#fff">Pierre-François Passager</strong><br>
-        Entrepreneur individuel – Micro-entreprise<br>
-        Nom commercial : <strong style="color:#fff">Entretien Vert 07</strong><br>
-        126 Chemin de Chalamon<br>
-        07000 Saint-Priest, France<br><br>
-        <strong style="color:#fff">Tél. :</strong> <a href="tel:0748169803">07 48 16 98 03</a><br>
-        <strong style="color:#fff">Email :</strong> <a href="mailto:entretienvert07@gmail.com">entretienvert07@gmail.com</a><br><br>
-        <strong style="color:#fff">Régime TVA :</strong> Franchise en base de TVA (art. 293B du CGI) – TVA non applicable
-      </p>
-    </div>
-    <div>
-      <h3>Hébergement</h3>
-      <p>
-        <strong style="color:#fff">GitHub Pages</strong><br>
-        GitHub, Inc.<br>
-        88 Colin P Kelly Jr St<br>
-        San Francisco, CA 94107, États-Unis<br>
-        <a href="https://pages.github.com" target="_blank">pages.github.com</a>
-      </p>
-    </div>
-    <div class="mentions-full">
-      <h3>Données personnelles & Cookies</h3>
-      <p>
-        Les données collectées via le formulaire de contact (nom, téléphone, email, message) sont utilisées uniquement pour répondre à vos demandes de devis. Elles sont transmises via Formspree (formspree.io) et ne sont pas cédées à des tiers.<br><br>
-        Conformément au RGPD (Règlement UE 2016/679) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en contactant : <a href="mailto:entretienvert07@gmail.com">entretienvert07@gmail.com</a><br><br>
-        Ce site n'utilise pas de cookies de traçage ou publicitaires.
-      </p>
-    </div>
-  </div>
-</section>
+        <section id="chantiers">
+            <h2>Nos Chantiers en Images</h2>
+            <div class="gallery-grid">
+                
+                <div class="photo-card">
+                    <div class="photo-wrapper">
+                        <span class="photo-tag tag-avant">Avant</span>
+                        <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=600" alt="Terrain brut avant terrassement">
+                    </div>
+                    <div class="photo-info">
+                        <h4>Préparation de terrain</h4>
+                        <p>Terrain en friche à Saint-Priest avant le début des opérations de nivellement.</p>
+                    </div>
+                </div>
 
-<footer>
-  <div class="footer-logo">Entretien Vert <span>07</span></div>
-  <p>© 2026 · Pierre-François Passager · Micro-entrepreneur · Ardèche (07)</p>
-  <p><a href="#mentions" style="color:rgba(255,255,255,.3);text-decoration:none;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase">Mentions légales</a></p>
-</footer>
+                <div class="photo-card">
+                    <div class="photo-wrapper">
+                        <span class="photo-tag tag-apres">Après</span>
+                        <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=600" alt="Pelleteuse et terrassement fini">
+                    </div>
+                    <div class="photo-info">
+                        <h4>Terrassement et plateforme terminés</h4>
+                        <p>Sol stabilisé, décaissement propre et prêt pour les fondations de la future habitation.</p>
+                    </div>
+                </div>
 
-<script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
+            </div>
+        </section>
 
-  document.querySelectorAll('.service-card, .tarif-card, .zone-item, .contact-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity .5s ease, transform .5s ease';
-    observer.observe(el);
-  });
-</script>
+        <section id="contact" class="contact-section">
+            <div class="contact-box">
+                
+                <div class="contact-info-side">
+                    <h3>Un projet en Ardèche ?</h3>
+                    <p>Besoin d'un devis ou d'une intervention à Saint-Priest ou aux alentours ? Remplissez le formulaire, nous vous recontactons dans les plus brefs délais pour étudier votre projet.</p>
+                    
+                    <div class="info-details">
+                        <div class="info-line">🏢 <strong>Entreprise :</strong> Manu Mommée TP</div>
+                        <div class="info-line">📍 <strong>Siège social :</strong> Saint-Priest (07000)</div>
+                        <div class="info-line">💼 <strong>Spécialité :</strong> Terrassement, Assainissement, Aménagement extérieur</div>
+                    </div>
+                </div>
+
+                <div>
+                    <form onsubmit="return false;">
+                        <div class="form-group">
+                            <label>Votre Nom / Prénom :</label>
+                            <input type="text" placeholder="Ex: Jean Valentin" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Votre Numéro de Téléphone :</label>
+                            <input type="tel" placeholder="Ex: 06 00 00 00 00" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Localisation du chantier :</label>
+                            <input type="text" placeholder="Ex: Privas, Saint-Priest, Chomérac..." required>
+                        </div>
+                        <div class="form-group">
+                            <label>Description des travaux :</label>
+                            <textarea rows="4" placeholder="Décrivez votre besoin (accès maison, tranchée réseaux, enrochement...)" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Envoyer ma demande de devis gratuit</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-box">
+            <div class="footer-left">
+                &copy; 2026 <strong>Manu Mommée TP</strong> - Tous droits réservés.
+            </div>
+            <div class="footer-right">
+                Artisan Terrassier à Saint-Priest (07) | <a href="#">Mentions Légales</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
