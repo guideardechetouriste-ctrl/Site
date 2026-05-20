@@ -3,259 +3,815 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manu Mommée TP - Terrassement & Travaux Publics à Saint-Priest</title>
+    <title>Pierre François Passager – Accompagnateur Touristique Ardèche</title>
     <style>
-        *, *::before, *::after { box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; color: #2c3e50; background-color: #f8fafc; line-height: 1.6; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        :root {
+            --bg-color: #fdfbf7;
+            --text-color: #2c3e2e;
+            --primary-color: #3d5a45;
+            --accent-color: #d97736;
+            --card-bg: #ffffff;
+            --border-color: #e6dfd3;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
 
-        /* TOP BAR */
-        .top-bar { background-color: #111827; color: #9ca3af; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #1f2937; }
-        .top-bar-box { display: flex; justify-content: space-between; align-items: center; }
-        .top-bar-box strong { color: #f39c12; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        /* HEADER */
-        header { background-color: #1a252f; color: #fff; padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .header-box { display: flex; justify-content: space-between; align-items: center; }
-        .logo-box { display: flex; align-items: center; gap: 12px; }
-        .logo-icon { background-color: #f39c12; color: #1a252f; padding: 8px 12px; border-radius: 6px; font-weight: bold; font-size: 20px; }
-        .logo-text h1 { font-size: 20px; margin: 0; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; }
-        .logo-text span { font-size: 11px; color: #f39c12; display: block; font-weight: bold; letter-spacing: 2px; }
-        nav a { color: #ecf0f1; text-decoration: none; margin-left: 20px; font-size: 15px; transition: color 0.3s; }
-        nav a:hover { color: #f39c12; }
-        .btn-devis { background-color: #f39c12; color: #fff !important; padding: 10px 20px; border-radius: 4px; font-weight: bold; text-decoration: none; transition: background-color 0.3s; }
-        .btn-devis:hover { background-color: #e67e22; }
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-        /* HERO */
-        .hero { background: linear-gradient(rgba(26,37,47,0.85), rgba(26,37,47,0.85)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1400') no-repeat center center/cover; color: #fff; padding: 100px 20px; text-align: center; border-bottom: 5px solid #f39c12; }
-        .badge-local { background-color: rgba(243,156,18,0.15); color: #f39c12; border: 1px solid #f39c12; padding: 6px 16px; border-radius: 50px; font-size: 13px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 20px; letter-spacing: 1px; }
-        .hero h2 { font-size: 44px; margin: 0 0 20px; max-width: 800px; margin-left: auto; margin-right: auto; color: #fff; font-weight: 800; }
-        .hero h2::after { display: none; }
-        .hero p { font-size: 18px; color: #d1d5db; margin-bottom: 35px; max-width: 680px; margin-left: auto; margin-right: auto; }
-        .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-hero-primary { background-color: #f39c12; color: #fff; padding: 14px 28px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 16px; transition: background-color 0.3s; }
-        .btn-hero-primary:hover { background-color: #e67e22; }
-        .btn-hero-secondary { background-color: #34495e; color: #fff; padding: 14px 28px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 16px; border-bottom: 2px solid #2c3e50; }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(253, 251, 247, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
 
-        /* SECTION TITLES */
-        h2 { text-align: center; font-size: 30px; color: #1a252f; margin-top: 70px; margin-bottom: 40px; position: relative; font-weight: 700; }
-        h2::after { content: ''; display: block; width: 60px; height: 4px; background-color: #f39c12; margin: 12px auto 0; border-radius: 2px; }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        /* SERVICES */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
-        .service-card { background-color: #fff; border: 1px solid #e2e8f0; border-top: 4px solid #34495e; padding: 28px 24px; border-radius: 4px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); transition: transform 0.2s, box-shadow 0.2s; }
-        .service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
-        .service-card h3 { font-size: 17px; color: #1a252f; margin-top: 0; margin-bottom: 10px; }
-        .service-card p { font-size: 14px; color: #475569; margin: 0; }
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
 
-        /* ENGAGEMENTS */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
-        .feature-box { background-color: #fff; border: 1px solid #e2e8f0; padding: 28px; border-radius: 4px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-        .feature-box h3 { color: #f39c12; margin-top: 0; font-size: 20px; }
-        .feature-box p { font-size: 14px; color: #475569; margin: 0; }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-        /* GALLERY */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 25px; margin-bottom: 20px; }
-        .photo-card { background-color: #fff; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .photo-wrapper { width: 100%; height: 290px; background-color: #edf2f7; position: relative; }
-        .photo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .photo-tag { position: absolute; top: 15px; left: 15px; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold; text-transform: uppercase; color: #fff; }
-        .tag-avant { background-color: #e74c3c; }
-        .tag-apres { background-color: #2ecc71; }
-        .photo-info { padding: 16px 20px; }
-        .photo-info h4 { margin: 0 0 6px; color: #1a252f; font-size: 16px; }
-        .photo-info p { margin: 0; color: #64748b; font-size: 14px; }
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-        /* CONTACT */
-        .contact-section { background-color: #1a252f; color: #fff; padding: 50px; border-radius: 6px; margin-top: 70px; border-left: 6px solid #f39c12; }
-        .contact-box { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        .contact-info-side h3 { color: #f39c12; font-size: 24px; margin-top: 0; }
-        .contact-info-side p { color: #cbd5e1; margin-bottom: 25px; font-size: 15px; }
-        .info-details { margin-top: 20px; }
-        .info-line { margin-bottom: 14px; font-size: 14px; display: flex; align-items: flex-start; gap: 10px; }
-        .info-line strong { color: #f39c12; }
-        .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; margin-bottom: 5px; color: #ecf0f1; font-weight: bold; font-size: 13px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid #34495e; background-color: #2c3e50; color: #fff; border-radius: 4px; font-size: 14px; font-family: inherit; }
-        .form-group input::placeholder, .form-group textarea::placeholder { color: #7f8c8d; }
-        .btn-submit { background-color: #f39c12; color: #fff; padding: 13px 30px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; width: 100%; font-size: 15px; transition: background-color 0.3s; font-family: inherit; margin-top: 6px; }
-        .btn-submit:hover { background-color: #e67e22; }
+        nav a:hover {
+            color: var(--accent-color);
+        }
 
-        /* FOOTER */
-        footer { background-color: #111827; color: #9ca3af; padding: 30px 0; margin-top: 70px; font-size: 14px; border-top: 1px solid #1f2937; }
-        .footer-box { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .footer-left strong { color: #fff; }
-        .footer-right a { color: #9ca3af; text-decoration: none; margin-left: 15px; }
-        .footer-right a:hover { color: #f39c12; }
+        .btn-call {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
 
-        /* RESPONSIVE */
+        .btn-call:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        section {
+            padding: 6rem 2rem 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            padding-top: 10rem;
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style pour l'image de profil / présentation dans le Hero */
+        .hero-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .badge {
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .subtitle {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(217, 119, 54, 0.3);
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background-color: #c46225;
+        }
+
+        h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem auto;
+            font-size: 1.1rem;
+        }
+
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0; /* Géré pour laisser l'image aller jusqu'aux bords */
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(61, 90, 69, 0.08);
+        }
+
+        /* Style pour les images illustrant les prestations */
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #555;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-price {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .card-price strong {
+            font-size: 1.4rem;
+            color: var(--text-color);
+        }
+
+        .grid-places {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+
+        .place-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .place-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .place-item h4 {
+            font-family: var(--font-serif);
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .grid-pricing {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .price-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .price-box.featured {
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 10px 25px rgba(217, 119, 54, 0.1);
+        }
+
+        .price-tag {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-tag strong {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-family: var(--font-serif);
+        }
+
+        .price-box ul {
+            list-style: none;
+            text-align: left;
+            margin: 2rem 0;
+            padding-left: 1rem;
+        }
+
+        .price-box li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .price-box li::before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: -1.5rem;
+            font-weight: bold;
+        }
+
+        .featured-label {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent-color);
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 4rem;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .info-item {
+            margin-bottom: 2rem;
+        }
+
+        .info-item strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .info-item a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input, textarea {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--accent-color);
+        }
+
+        .mentions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: #555;
+            border-top: 1px solid var(--border-color);
+            padding-top: 3rem;
+            margin-top: 4rem;
+        }
+
+        .mentions-block h3 {
+            font-family: var(--font-serif);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .mentions-block p, .mentions-block ul {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        footer a {
+            color: white;
+            opacity: 0.7;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.9rem;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
         @media (max-width: 768px) {
-            .contact-box { grid-template-columns: 1fr; gap: 30px; }
-            .gallery-grid { grid-template-columns: 1fr; }
-            .top-bar-box { flex-direction: column; gap: 4px; text-align: center; }
-            .hero h2 { font-size: 28px; }
-            nav { display: none; }
+            h1 { font-size: 2.5rem; }
+            nav ul { display: none; }
+            .contact-container { padding: 2rem; }
+            section { padding: 4rem 1rem 2rem 1rem; }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="top-bar">
-        <div class="container top-bar-box">
-            <div><span>📍 Zone d'intervention : <strong>Saint-Priest & toute l'Ardèche</strong></span></div>
-            <div><span>📞 Besoin d'un terrassier ? Contactez-nous dès aujourd'hui</span></div>
-        </div>
-    </div>
-
     <header>
-        <div class="container header-box">
-            <div class="logo-box">
-                <div class="logo-icon">🚜</div>
-                <div class="logo-text">
-                    <h1>Manu Mommée TP</h1>
-                    <span>Terrassement & Réseaux</span>
-                </div>
-            </div>
+        <div class="nav-container">
+            <a href="#" class="logo">Pierre François Passager</a>
             <nav>
-                <a href="#services">Nos Services</a>
-                <a href="#chantiers">Chantiers</a>
-                <a href="#contact" class="btn-devis">Devis Gratuit</a>
+                <ul>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#services">Prestations</a></li>
+                    <li><a href="#places">Découvertes</a></li>
+                    <li><a href="#pricing">Tarifs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#mentions">Mentions légales</a></li>
+                </ul>
             </nav>
+            <a href="tel:0748169803" class="btn-call">📞 Réserver</a>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="badge-local">• Artisan Local • Saint-Priest</div>
-            <h2>Terrassement & Aménagement Extérieur</h2>
-            <p>Artisan qualifié pour particuliers et professionnels en Ardèche. Du gros œuvre aux finitions — précision, délais tenus, garantie décennale.</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn-hero-primary">🚜 Demander un devis gratuit</a>
-                <a href="#chantiers" class="btn-hero-secondary">Voir nos chantiers →</a>
+    <section class="hero" id="about">
+        <img src="hero.jpg" alt="Pierre François Passager" class="hero-image">
+        <div class="badge">✦ Passionné d'Ardèche · Local de naissance · Accompagnateur</div>
+        <h1>Pierre François<br>Passager</h1>
+        <div class="subtitle">Votre accompagnateur en Ardèche</div>
+        <p>
+            Né et élevé en Ardèche, je connais ce territoire dans ses moindres recoins. 
+            Gorges, villages de pierre, cascades secrètes, garrigue et vignobles… 
+            Je vous fait découvrir <em>la vraie Ardèche</em>, celle qui ne se trouve dans aucun guide.
+        </p>
+        <a href="#contact" class="btn-primary">Réserver une visite</a>
+    </section>
+
+    <section id="services">
+        <div class="badge">✦ Mes accompagnements</div>
+        <h2>Ce que je vous <em>propose</em></h2>
+        <p class="intro-text">
+            Chaque itinéraire est conçu pour vous faire vivre une immersion totale, loin de la foule et au plus près de la nature ardéchoise. 
+            J'interviens en tant qu'accompagnateur passionné et non comme guide-conférencier diplômé d'État. 
+            Chaque sortie est personnalisée, vivante, et inoubliable.
+        </p>
+
+        <div class="grid-services">
+            <div class="card">
+                <img src="gorges.jpg" alt="Gorges de l'Ardèche" class="card-img">
+                <div class="card-content">
+                    <div>
+                        <h3>Gorges de l'Ardèche</h3>
+                        <p>L'itinéraire emblématique des gorges, des belvédères secrets aux criques sauvages. Avec des anecdotes historiques et géologiques que seul un local connaît.</p>
+                    </div>
+                    <div class="card-price">À partir de <br><strong>45 €</strong> par personne · demi-journée</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="villages.jpg" alt="Villages Médiévaux d'Ardèche" class="card-img">
+                <div class="card-content">
+                    <div>
+                        <h3>Villages Médiévaux</h3>
+                        <p>Balazuc, Vogüé, Ruoms, Alba-la-Romaine… Les plus beaux villages d'Ardèche révèlent leurs secrets lors de nos balades. Architecture, légendes et vie locale au programme.</p>
+                    </div>
+                    <div class="card-price">À partir de <br><strong>40 €</strong> par personne · demi-journée</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="volcan.jpg" alt="Ardèche Volcanique" class="card-img">
+                <div class="card-content">
+                    <div>
+                        <h3>Ardèche Volcanique</h3>
+                        <p>La Route des Cols, le Mont Mézenc, le plateau du Velay ardéchois. Un voyage dans l'Ardèche volcanique, entre paysages lunaires et nature préservée.</p>
+                    </div>
+                    <div class="card-price">À partir de <br><strong>55 €</strong> par personne · journée</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="vignoble.jpg" alt="Vignobles et Gastronomie Ardéchoise" class="card-img">
+                <div class="card-content">
+                    <div>
+                        <h3>Vignobles & Gastronomie</h3>
+                        <p>Châtaigne, caillette, vins des Côtes du Vivarais et des Côtes du Rhône. Une immersion dans les saveurs ardéchoises avec visites de producteurs locaux.</p>
+                    </div>
+                    <div class="card-price">À partir de <br><strong>65 €</strong> par personne · journée</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="baignade.jpg" alt="Baignades et Cascades secrètes" class="card-img">
+                <div class="card-content">
+                    <div>
+                        <h3>Baignades & Nature</h3>
+                        <p>Les sources secrètes, cascades et vasques naturelles que seuls les locaux connaissent. Natation, détente et immersion dans la nature ardéchoise préservée.</p>
+                    </div>
+                    <div class="card-price">À partir de <br><strong>35 €</strong> par personne · demi-journée</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content" style="padding-top: 3rem;">
+                    <div>
+                        <div style="font-size: 2.5rem; margin-bottom: 1.5rem;">⭐</div>
+                        <h3>Visite Sur Mesure</h3>
+                        <p>Vous avez des envies particulières ? Je construis avec vous une journée entièrement personnalisée, adaptée à vos centres d'intérêt, votre rythme et votre groupe.</p>
+                    </div>
+                    <div class="card-price">Sur devis <br><strong>—</strong> Tarif personnalisé · groupes & familles</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <main class="container">
+    <section id="places">
+        <div class="badge">✦ À découvrir</div>
+        <h2>Les incontournables<br><em>de l'Ardèche</em></h2>
+        <p class="intro-text" style="margin-bottom: 3rem;">
+            Des gorges majestueuses aux villages perchés, des grottes préhistoriques aux marchés colorés, 
+            l'Ardèche est un territoire d'une richesse infinie. Je vous accompagne vers les meilleurs sites, 
+            les plus beaux paysages et les lieux hors des foules.
+        </p>
 
-        <section id="services">
-            <h2>Nos Prestations de Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>🏗️ Terrassement & Fondations</h3>
-                    <p>Préparation de terrain, excavation pour maisons individuelles, terrassement de piscines et création de tranchées pour réseaux.</p>
+        <div class="grid-places">
+            <div class="place-item">
+                <div class="place-icon">🗺️</div>
+                <h4>Gorges de l'Ardèche</h4>
+                <p style="font-size:0.85rem; color:#666;">Site naturel · Grand Canyon français</p>
+            </div>
+            <div class="place-item">
+                <div class="place-icon">🦣</div>
+                <h4>Grotte Chauvet</h4>
+                <p style="font-size:0.85rem; color:#666;">Patrimoine UNESCO · Art rupestre</p>
+            </div>
+            <div class="place-item">
+                <div class="place-icon">🌉</div>
+                <h4>Pont d'Arc</h4>
+                <p style="font-size:0.85rem; color:#666;">Arche naturelle · Emblème ardéchois</p>
+            </div>
+            <div class="place-item">
+                <div class="place-icon">🏰</div>
+                <h4>Balazuc</h4>
+                <p style="font-size:0.85rem; color:#666;">Plus beaux villages de France</p>
+            </div>
+            <div class="place-item">
+                <div class="place-icon">🌊</div>
+                <h4>Cascade du Ray-Pic</h4>
+                <p style="font-size:0.85rem; color:#666;">Chute volcanique · Randonnée</p>
+            </div>
+            <div class="place-item">
+                <div class="place-icon">🏺</div>
+                <h4>Alba-la-Romaine</h4>
+                <p style="font-size:0.85rem; color:#666;">Site antique · Histoire romaine</p>
+            </div>
+            <div class="place-item">
+                <div class="place-icon">🌿</div>
+                <h4>Vallon-Pont-d'Arc</h4>
+                <p style="font-size:0.85rem; color:#666;">Village de référence · Canoë</p>
+            </div>
+            <div class="place-item">
+                <div class="place-icon">⛪</div>
+                <h4>Vogüé</h4>
+                <p style="font-size:0.85rem; color:#666;">Village médiéval · Château</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="badge">✦ Tarifs</div>
+        <h2>Des prix <em>justes</em><br>et transparents</h2>
+        <p class="intro-text">
+            Mes accompagnements s'adaptent à vos besoins. Pas de frais cachés, tout est inclus dans le tarif fixé au départ.
+        </p>
+
+        <div class="grid-pricing">
+            <div class="price-box">
+                <div class="price-title" style="font-family:var(--font-serif); font-size:1.5rem; color:var(--primary-color); margin-bottom:1rem;">Demi-journée</div>
+                <div class="price-tag">à partir de <br><strong>35 €</strong> <br>par personne · 3 à 4 heures</div>
+                <ul>
+                    <li>Visite guidée 3–4h</li>
+                    <li>1 site ou thème</li>
+                    <li>Commentaires historiques</li>
+                    <li>Jusqu'à 8 personnes</li>
+                    <li>Départ au choix</li>
+                </ul>
+            </div>
+
+            <div class="price-box featured">
+                <div class="featured-label">Le plus choisi</div>
+                <div class="price-title" style="font-family:var(--font-serif); font-size:1.5rem; color:var(--primary-color); margin-bottom:1rem;">Journée Complète</div>
+                <div class="price-tag">à partir de <br><strong>65 €</strong> <br>par personne · 7 à 8 heures</div>
+                <ul>
+                    <li>Visite guidée journée entière</li>
+                    <li>2 à 3 sites emblématiques</li>
+                    <li>Pause déjeuner incluse (suggestion)</li>
+                    <li>Jusqu'à 8 personnes</li>
+                    <li>Itinéraire personnalisé</li>
+                    <li>Photos & souvenirs</li>
+                </ul>
+            </div>
+
+            <div class="price-box">
+                <div class="price-title" style="font-family:var(--font-serif); font-size:1.5rem; color:var(--primary-color); margin-bottom:1rem;">Groupe & Privatif</div>
+                <div class="price-tag"><br><strong>Sur devis</strong> <br>groupes · familles · entreprises</div>
+                <ul>
+                    <li>Programme entièrement sur mesure</li>
+                    <li>Groupes de 1 à 20 personnes</li>
+                    <li>Forfait famille disponible</li>
+                    <li>Team building possible</li>
+                    <li>Devis gratuit sous 24h</li>
+                </ul>
+            </div>
+        </div>
+        <p style="text-align:center; margin-top:2rem; font-size:0.9rem; color:#777; font-style:italic;">
+            ✦ Tarifs indicatifs aux prix du marché · Réduction enfants disponible · TVA incluse
+        </p>
+    </section>
+
+    <section id="contact">
+        <div class="badge">✦ Contact</div>
+        <h2>Parlons de votre<br><em>aventure</em></h2>
+        <p class="intro-text">
+            Prêt à découvrir l'Ardèche comme vous ne l'avez jamais imaginé ? 
+            Contactez-moi pour toute question, pour réserver une visite 
+            ou pour concevoir ensemble votre programme sur mesure.
+        </p>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Mes coordonnées</h3>
+                <div class="info-item">
+                    <strong>Téléphone · WhatsApp</strong>
+                    <a href="tel:0748169803">07 48 16 98 03</a>
                 </div>
-                <div class="service-card">
-                    <h3>🛣️ Aménagement Extérieur</h3>
-                    <p>Création de cours, chemins d'accès privatifs ou agricoles, empierrement de talus et enrochement paysager durable.</p>
+                <div class="info-item">
+                    <strong>Zone d'activité</strong>
+                    <p style="color:var(--accent-color); font-weight:600;">Ardèche (07) – Toute la région</p>
                 </div>
-                <div class="service-card">
-                    <h3>💧 Assainissement & VRD</h3>
-                    <p>Pose et mise aux normes de fosses septiques, micro-stations de traitement et raccordement aux réseaux (eaux usées / pluviales).</p>
+                <div class="info-item">
+                    <strong>Disponibilité</strong>
+                    <p>7j/7 · Sur réservation</p>
                 </div>
-                <div class="service-card">
-                    <h3>🔨 Démolition & Déblaiement</h3>
-                    <p>Démolition sécurisée de petites structures, tri, nettoyage de parcelles et évacuation des gravats vers les centres agréés.</p>
+                <div class="info-item">
+                    <strong>Réponse garantie</strong>
+                    <p>Sous 24 heures</p>
                 </div>
             </div>
-        </section>
 
-        <section id="engagements">
-            <h2>Pourquoi faire confiance à Manu Mommée TP ?</h2>
-            <div class="features-grid">
-                <div class="feature-box">
-                    <h3>📍 Ancrage Local</h3>
-                    <p>Basé à Saint-Priest, une parfaite connaissance des sols ardéchois et une grande réactivité pour vos chantiers.</p>
-                </div>
-                <div class="feature-box">
-                    <h3>🛡️ Garantie Décennale</h3>
-                    <p>Tous nos travaux de terrassement et de gros œuvre sont couverts par une assurance décennale obligatoire.</p>
-                </div>
-                <div class="feature-box">
-                    <h3>🤝 Devis Transparent</h3>
-                    <p>Une étude personnalisée sur site suivie d'un devis clair, gratuit et détaillé ligne par ligne avant le début des travaux.</p>
-                </div>
+            <div class="contact-form">
+                <form action="https://formspree.io/f/xoqgqpjo" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nom / Prénom :</label>
+                        <input type="text" id="name" name="name" required placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Adresse e-mail :</label>
+                        <input type="email" id="email" name="email" required placeholder="votre@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Votre demande de réservation ou question :</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Ex: Bonjour, nous aimerions réserver une sortie aux Gorges pour 4 personnes le..."></textarea>
+                    </div>
+                    <button type="submit">Envoyer ma demande →</button>
+                </form>
             </div>
-        </section>
+        </div>
 
-        <section id="chantiers">
-            <h2>Nos Chantiers en Images</h2>
-            <div class="gallery-grid">
-                
-                <div class="photo-card">
-                    <div class="photo-wrapper">
-                        <span class="photo-tag tag-avant">Avant</span>
-                        <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=600" alt="Terrain brut avant terrassement">
-                    </div>
-                    <div class="photo-info">
-                        <h4>Préparation de terrain</h4>
-                        <p>Terrain en friche à Saint-Priest avant le début des opérations de nivellement.</p>
-                    </div>
-                </div>
-
-                <div class="photo-card">
-                    <div class="photo-wrapper">
-                        <span class="photo-tag tag-apres">Après</span>
-                        <img src="https://images.unsplash.com/photo-1590069261209-f8e9b8642343?q=80&w=600" alt="Pelleteuse et terrassement fini">
-                    </div>
-                    <div class="photo-info">
-                        <h4>Terrassement et plateforme terminés</h4>
-                        <p>Sol stabilisé, décaissement propre et prêt pour les fondations de la future habitation.</p>
-                    </div>
-                </div>
-
+        <div id="mentions" class="mentions-grid">
+            <div class="mentions-block">
+                <h3>Éditeur du site</h3>
+                <p>
+                    <strong>Pierre-François Passager</strong><br>
+                    Entrepreneur individuel – Micro-entreprise<br>
+                    Nom commercial : <strong>Explora Guide</strong><br>
+                    126 Chemin de Chalamon<br>
+                    07000 Saint-Priest, France
+                </p>
+                <p>
+                    <strong>SIREN :</strong> 105 071 948<br>
+                    <strong>Code APE :</strong> 7990Z – Guides et assistances touristiques<br>
+                    <strong>Régime TVA :</strong> Franchise en base de TVA (art. 293 B du CGI) – TVA non applicable
+                </p>
+                <p>
+                    <strong>Tél. :</strong> <a href="tel:0748169803" style="color:inherit; text-decoration:none;">07 48 16 98 03</a><br>
+                    <strong>Email :</strong> <a href="mailto:guide.ardeche.touriste@gmail.com" style="color:inherit; text-decoration:none;">guide.ardeche.touriste@gmail.com</a>
+                </p>
             </div>
-        </section>
 
-        <section id="contact" class="contact-section">
-            <div class="contact-box">
-                
-                <div class="contact-info-side">
-                    <h3>Un projet en Ardèche ?</h3>
-                    <p>Besoin d'un devis ou d'une intervention à Saint-Priest ou aux alentours ? Remplissez le formulaire, nous vous recontactons dans les plus brefs délais pour étudier votre projet.</p>
-                    
-                    <div class="info-details">
-                        <div class="info-line">🏢 <strong>Entreprise :</strong> Manu Mommée TP</div>
-                        <div class="info-line">📍 <strong>Siège social :</strong> Saint-Priest (07000)</div>
-                        <div class="info-line">💼 <strong>Spécialité :</strong> Terrassement, Assainissement, Aménagement extérieur</div>
-                    </div>
-                </div>
-
-                <div>
-                    <form onsubmit="return false;">
-                        <div class="form-group">
-                            <label>Votre Nom / Prénom :</label>
-                            <input type="text" placeholder="Ex: Jean Valentin" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Votre Numéro de Téléphone :</label>
-                            <input type="tel" placeholder="Ex: 06 00 00 00 00" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Localisation du chantier :</label>
-                            <input type="text" placeholder="Ex: Privas, Saint-Priest, Chomérac..." required>
-                        </div>
-                        <div class="form-group">
-                            <label>Description des travaux :</label>
-                            <textarea rows="4" placeholder="Décrivez votre besoin (accès maison, tranchée réseaux, enrochement...)" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">Envoyer ma demande de devis gratuit</button>
-                    </form>
-                </div>
-
+            <div class="mentions-block">
+                <h3>Hébergement</h3>
+                <p>
+                    <strong>GitHub Pages</strong><br>
+                    GitHub, Inc.<br>
+                    88 Colin P Kelly Jr St<br>
+                    San Francisco, CA 94107, États-Unis<br>
+                    <a href="https://pages.github.com" target="_blank" style="color:var(--accent-color); text-decoration:none;">pages.github.com</a>
+                </p>
             </div>
-        </section>
 
-    </main>
+            <div class="mentions-block">
+                <h3>Nature de l'activité</h3>
+                <p style="font-style: italic;">
+                    Pierre-François Passager intervient en qualité d'<strong>accompagnateur touristique passionné</strong>, 
+                    ardéchois de naissance, et non comme guide-conférencier ou guide de tourisme diplômé d'État au sens 
+                    de la loi n° 92-645 du 13 juillet 1992.
+                </p>
+                <p>
+                    Les prestations gratuites ou payantes proposées constituent des <strong>accompagnements de loisirs</strong> basés sur 
+                    une connaissance personnelle et approfondie du territoire de l'Ardèche. Elles n'incluent pas de commentaires 
+                    dans des monuments ou musées classés nécessitant une carte professionnelle de guide-conférencier.
+                </p>
+            </div>
+
+            <div class="mentions-block">
+                <h3>Données personnelles & Cookies</h3>
+                <p>
+                    Les données collectées via le formulaire de contact (nom, e-mail, message) sont utilisées 
+                    uniquement pour répondre aux demandes des visiteurs. Elles sont traitées par 
+                    <strong>Formspree</strong> (formspree.io) et ne sont pas cédées à des tiers.
+                </p>
+                <p>
+                    Conformément à la loi Informatique et Libertés du 6 janvier 1978 modifiée et au Règlement 
+                    Européen 2016/679 (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression 
+                    de vos données en contactant : <a href="mailto:guide.ardeche.touriste@gmail.com">guide.ardeche.touriste@gmail.com</a>
+                </p>
+                <p>Ce site n'utilise pas de cookies de traçage ou publicitaires.</p>
+            </div>
+        </div>
+
+        <div class="mentions-block" style="grid-column: 1 / -1; margin-top: 1rem; font-size: 0.9rem; color: #555;">
+            <h3>Responsabilité</h3>
+            <p>
+                Les informations présentes sur ce site sont fournies à titre indicatif. L'éditeur s'efforce 
+                de maintenir ces informations à jour mais ne peut garantir leur exactitude exhaustive. 
+                Les clients participants aux sorties le font sous leur propre responsabilité. 
+                Il est conseillé de souscrire une assurance personnelle pour toute activité de plein air.
+            </p>
+        </div>
+    </section>
 
     <footer>
-        <div class="container footer-box">
-            <div class="footer-left">
-                &copy; 2026 <strong>Manu Mommée TP</strong> - Tous droits réservés.
-            </div>
-            <div class="footer-right">
-                Artisan Terrassier à Saint-Priest (07) | <a href="#">Mentions Légales</a>
-            </div>
+        <p>Pierre François Passager – Explora Guide · Micro-entrepreneur · SIREN 105 071 948 · Ardèche 07 · © 2026</p>
+        <div>
+            <a href="#mentions">Mentions légales</a>
+            <a href="tel:0748169803">07 48 16 98 03</a>
         </div>
     </footer>
 
